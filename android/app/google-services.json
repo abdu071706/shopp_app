@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160320400183",
+    "project_id": "shoppapp-bd468",
+    "storage_bucket": "shoppapp-bd468.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160320400183:android:3c09ef08cecaa793c9c8b2",
+        "android_client_info": {
+          "package_name": "com.example.shopp_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160320400183-ma2e8e8993f6msfri2q8s8nt3l3rd426.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC08_EosVtooGy2ihmx081h_MIQgvBF004"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160320400183-ma2e8e8993f6msfri2q8s8nt3l3rd426.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
