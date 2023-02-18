@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shopp_app/app/pages/home_page/shoppy_ui.dart';
+import 'package:shopp_app/app/pages/home_page/home_page.dart';
 
-import 'app/pages/register_page/sign_up.dart';
+import 'app/pages/customers/auth/sign_up/customer_sign_up_page.dart';
 import 'app/pages/welcome_page/welcome_to_ui.dart';
 
 void main()async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(context) => WelcomePage(),
         '/signup_page':(context) => SignUp(),
-        '/home_page':(context) => Shoppy(),
+        '/home_page':(context) => Home_page(),
       },
     );
   }
