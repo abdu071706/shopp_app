@@ -2,7 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shopp_app/app/pages/auth_widgets/snack_bar_widget.dart';
@@ -24,6 +27,7 @@ class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
+       CollectionReference customers = FirebaseFirestore.instance.collection('customers');
 
   String? _name;
   String? _email;
@@ -32,6 +36,8 @@ class _SignUpState extends State<SignUp> {
   bool processing = false;
   final ImagePicker _picker = ImagePicker();
   XFile? _imageFile;
+  late String _profileimage;
+  late String _uid;
   void _pickImageFromCamera() async {
     try {
       final _pickedImage = await _picker.pickImage(
@@ -87,7 +93,18 @@ class _SignUpState extends State<SignUp> {
             email: _email!,
             password: _password!,
           );
-          Navigator.pushReplacementNamed(context, '/customer_login_page');
+          firebase_storage.Reference reference = firebase_storage.FirebaseStorage.instance.ref('customers-images/$_email.jpg');
+          await reference.putFile(File(_imageFile!.path));
+          _uid = FirebaseAuth.instance.currentUser!.uid;
+          _profileimage = await reference.getDownloadURL();
+          Navigator.pushReplacementNamed(context, '/customer_page');
+          await customers.doc(_uid).set({
+            'name': _name,
+            'email': _email,
+            'phone': '',
+            'address': '',
+            'profileImage': _profileimage,
+            },);
         } on FirebaseAuthException catch (e) {
           if (e.code == 'weak-password') {
             setState(() {
@@ -310,7 +327,7 @@ class _SignUpState extends State<SignUp> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: Colors.orange,
                           ),
                         )
                       :

@@ -1,7 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopp_app/app/pages/customers/main_pages/profile/profile_page.dart';
 import 'package:shopp_app/app/pages/home_page/home_page.dart';
-
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class CustomerPage extends StatefulWidget {
 class _CustomerPageState extends State<CustomerPage> {
   int _selectedIndex = 0;
   final List<Widget> _tabs = [
-  Home_page(),
+    Home_page(),
     Center(child: Text('Category Screen')),
     Center(child: Text('Stores Screen')),
     Center(child: Text('Cart Screen')),

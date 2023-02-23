@@ -24,7 +24,7 @@ class _WelcomePageState extends State<WelcomePage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/images/inapp/lion.avif"),
+            image: AssetImage("assets/images/inapp/lion.jpg"),
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -102,45 +102,75 @@ class _WelcomePageState extends State<WelcomePage> {
                     ],
                   ),
                 ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 70,
-                ),
+              ), 
+              Column(mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                padding: const EdgeInsets.only(right: 220, bottom: 7),
                 child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                      ),
-                      color: Colors.orange[800]),
-                  child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          LogSignWidget(
-                            title: 'Log In',
-                            onTap: () {},
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
+                            color: Colors.orange[800],
                           ),
-                          LogSignWidget(
-                            title: 'Sign Up',
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/signup_page');
-                            },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Customers',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
-                          SizedBox(
-                              height: 40,
-                              child: Image(
-                                image: AssetImage(
-                                  "assets/images/inapp/lions.png",
-                                ),
-                                color: Colors.black,
-                              )),
-                        ],
-                      )),
-                ),
+                        ),
+              ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 70,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                          ),
+                          color: Colors.orange[800]),
+                      child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              
+                              LogSignWidget(
+                                title: 'Log In',
+                                onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/cutomer_login_page');
+                                },
+                              ),
+                              LogSignWidget(
+                                title: 'Sign Up',
+                                onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/customer_sign_up_page');
+                                },
+                              ),
+                              SizedBox(
+                                  height: 40,
+                                  child: Image(
+                                    image: AssetImage(
+                                      "assets/images/inapp/lions.png",
+                                    ),
+                                    color: Colors.black,
+                                  )),
+                            ],
+                          )),
+                    ),
+                  ),
+                ],
               ),
               Container(
                 color: Colors.orange[800],

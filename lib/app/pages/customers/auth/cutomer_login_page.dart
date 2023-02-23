@@ -64,6 +64,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -82,6 +83,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           'Log In',
                           style: TextStyle(
                             fontSize: 35,
+                            color: Colors.white,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -93,6 +95,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           icon: Icon(
                             Icons.home_work,
                             size: 35,
+                            color: Colors.orange,
                           ),
                         )
                       ],
@@ -104,6 +107,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                     child: Column(
                       children: [
                         TextFormField(
+                          style: TextStyle(color: Colors.white),
                           onChanged: (value) {
                             _email = value;
                             log(_email!);
@@ -122,18 +126,18 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: Colors.orange, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                                  BorderSide(color: Colors.orange, width: 2.0),
                             ),
                             hintText: 'Please enter your email  ',
                             label: Text(
                               'Email',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: Colors.white),
                             ),
                           ),
                         ),
@@ -141,6 +145,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          style: TextStyle(color: Colors.white),
                           onChanged: (value) {
                             _password = value;
                             log(_password!);
@@ -167,18 +172,18 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  BorderSide(color: Colors.orange, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide:
-                                  BorderSide(color: Colors.purple, width: 2.0),
+                                  BorderSide(color: Colors.orange, width: 2.0),
                             ),
                             hintText: 'Please enter your password ',
                             label: Text(
                               'Password',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.blueGrey),
+                                  fontSize: 20, color: Colors.white),
                             ),
                           ),
                         ),
@@ -188,6 +193,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                             'Forget Password? ',
                             style: TextStyle(
                               fontSize: 18,
+                              color: Colors.white,
                               fontStyle: FontStyle.italic,
                             ),
                           ),
@@ -211,7 +217,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                   processing == true
                       ? Center(
                           child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: Colors.orange,
                           ),
                         )
                       : GestureDetector(
@@ -220,7 +226,7 @@ class _CustomerLogInPageState extends State<CustomerLogInPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.purple,
+                                color: Colors.orange,
                                 borderRadius: BorderRadius.circular(30)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(

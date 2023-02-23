@@ -17,11 +17,14 @@ class SignUpIconhomeWidget extends StatelessWidget {
               fontSize: 35, fontWeight: FontWeight.bold),
         ),
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+                Navigator.pushReplacementNamed(
+                                context, '/welcome_page');
+            },
             icon: Icon(
               Icons.home_work,
               size: 35,
-              color: Colors.white,
+              color: Colors.orange,
             ))
       ],
     );

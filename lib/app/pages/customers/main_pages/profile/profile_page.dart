@@ -1,44 +1,62 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopp_app/app/pages/customers/main_pages/profile/profile_widgets/profile_header_label_widgets.dart';
 import 'package:shopp_app/app/pages/customers/main_pages/profile/profile_widgets/repeadted_listtile_widget.dart';
 import 'package:shopp_app/app/pages/customers/main_pages/profile/profile_widgets/yellow_divider.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key? key, }) : super(key: key);
+ 
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+   CollectionReference customers = FirebaseFirestore.instance.collection('customers');
   @override
   Widget build(BuildContext context) {
     final mediaSizeWidth = MediaQuery.of(context).size.width;
     final mediaSizeHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return FutureBuilder<DocumentSnapshot>(
+      future: customers.doc(FirebaseAuth.instance.currentUser!.uid).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          return  Scaffold(
       backgroundColor: Colors.grey.shade300,
-      body: Stack(
-        children: [
-          Container(
-            height: 230,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.yellow,
-                Colors.brown,
-              ]),
-            ),
+      body: Stack(children: [
+        Container(
+          height: 230,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Colors.yellow,
+              Colors.brown,
+            ]),
           ),
-          CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                elevation: 0,
-                centerTitle: true,
-                backgroundColor: Colors.white,
-                expandedHeight: 140,
-                pinned: true,
-                flexibleSpace: LayoutBuilder(builder: (context, ogronichenie) {
-                  return FlexibleSpaceBar(
-                      title: AnimatedOpacity(
+        ),
+        CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              elevation: 0,
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              expandedHeight: 140,
+              pinned: true,
+              flexibleSpace: LayoutBuilder(builder: (context, ogronichenie) {
+                return FlexibleSpaceBar(
+                  title: AnimatedOpacity(
                     duration: Duration(milliseconds: 200),
                     opacity: ogronichenie.biggest.height <= 120 ? 1 : 0,
                     child: Text(
@@ -46,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-                    background: Container(
+                  background: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -55,21 +73,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-                      child: Padding(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 25, left: 30),
                       child: Row(
                         children: [
                           CircleAvatar(
                             radius: 50,
-                            backgroundImage:
-                                AssetImage('assets/images/inapp/guest.jpg'),
+                            backgroundImage:NetworkImage(data['profileImage'])
+                                // AssetImage('assets/images/inapp/guest.jpg'),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 25),
                             child: Text(
-                              // 'Guest'.toUpperCase(),
-                              'Guest'.toUpperCase(),
-
+                              data['name'].toUpperCase(),
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
@@ -83,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 );
               }),
             ),
-             SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Column(
                 children: [
                   Container(
@@ -191,20 +207,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                 RepeatedListTile(
                                   title: 'Email Address',
 
-                                  subTitle: 'example@email.com',
+                                  subTitle: data['email'],
                                   icon: Icons.email,
                                   // onPressed: () {},
                                 ),
                                 YellowDivider(),
                                 RepeatedListTile(
                                   title: 'Phone No.',
-                                  subTitle: 'Anonymous phone',
+                                  subTitle: data['phone'],
                                   icon: Icons.phone,
                                 ),
                                 YellowDivider(),
                                 RepeatedListTile(
                                   title: 'Address',
-                                  subTitle: 'Anonymous address ',
+                                  subTitle: data['address'],
                                   icon: Icons.location_pin,
                                   onPressed: () {},
                                 ),
@@ -255,5 +271,13 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ]),
     );
+        }
+
+        return Text("loading");
+      },
+    );
+    
+    
+   
   }
 }

@@ -25,7 +25,7 @@ class HaveAccountWidget extends StatelessWidget {
             registerTitle,
             style: TextStyle(
                 fontSize: 20,
-                color: Colors.purple,
+                color: Colors.orange,
                 fontWeight: FontWeight.bold),
           ),
         ),

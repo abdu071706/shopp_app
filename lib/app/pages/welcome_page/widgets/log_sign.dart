@@ -15,7 +15,7 @@ class LogSignWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.grey[700],
+          color: Colors.black,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 7),

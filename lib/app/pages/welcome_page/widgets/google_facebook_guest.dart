@@ -21,9 +21,9 @@ class GoogleFacebookGuestWidget extends StatelessWidget {
         children: [
           Container(
             height: 60,
-            child: Image(image: 
+            child: Image(image:
             
-            AssetImage(image)),
+            AssetImage(image), width: 40),
           ),
           Text(
             title,
