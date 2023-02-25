@@ -19,7 +19,7 @@ class _OrdersState extends State<Orders> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-            height: 300,
+            height: 350,
               width: 350,
               decoration: BoxDecoration(color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(12)),
