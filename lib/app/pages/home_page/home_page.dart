@@ -26,6 +26,7 @@ class _Home_pageState extends State<Home_page> {
       length: 9,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: SearchBarWidget(),
           backgroundColor: Colors.white,
           bottom: TabBar(
@@ -45,38 +46,38 @@ class _Home_pageState extends State<Home_page> {
               ]),
         ),
         body: Center(),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.green,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-              backgroundColor: Colors.green,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'Category',
-              backgroundColor: Colors.green,
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shop),
-                label: 'Stores',
-                backgroundColor: Colors.green),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart),
-                label: 'Cart',
-                backgroundColor: Colors.green),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_pin),
-                label: 'Profile',
-                backgroundColor: Colors.black)
-          ],
-          selectedItemColor: Colors.grey[600],
-          unselectedItemColor: Colors.white,
-          onTap: _onItemTapped,
-          currentIndex: _selectedindex,
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   type: BottomNavigationBarType.fixed,
+        //   backgroundColor: Colors.green,
+        //   items: const <BottomNavigationBarItem>[
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.home_outlined),
+        //       label: 'Home',
+        //       backgroundColor: Colors.green,
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.search_outlined),
+        //       label: 'Category',
+        //       backgroundColor: Colors.green,
+        //     ),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.shop),
+        //         label: 'Stores',
+        //         backgroundColor: Colors.green),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.shopping_cart),
+        //         label: 'Cart',
+        //         backgroundColor: Colors.green),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.person_pin),
+        //         label: 'Profile',
+        //         backgroundColor: Colors.black)
+        //   ],
+        //   selectedItemColor: Colors.grey[600],
+        //   unselectedItemColor: Colors.white,
+        //   onTap: _onItemTapped,
+        //   currentIndex: _selectedindex,
+        // ),
       ),
     );
   }
