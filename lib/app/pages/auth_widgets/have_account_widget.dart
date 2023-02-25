@@ -17,7 +17,7 @@ class HaveAccountWidget extends StatelessWidget {
       children: [
         Text(
           haveAccount,
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: 18, color: Colors.white),
         ),
         GestureDetector(
           onTap: onTap,

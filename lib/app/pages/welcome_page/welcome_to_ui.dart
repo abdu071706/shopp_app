@@ -91,11 +91,16 @@ class _WelcomePageState extends State<WelcomePage> {
                                       ),
                                       color: Colors.black,
                                     )),
-                                LogSignWidget(title: 'Log In', onTap: () {}),
+                                LogSignWidget(title: 'Log In', onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/suppliers_logIn');                                }),
                                 SizedBox(
                                   width: 15,
                                 ),
-                                LogSignWidget(title: 'Sign Up', onTap: () {}),
+                                LogSignWidget(title: 'Sign Up', onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/suppliers_signUp');
+                                }),
                               ],
                             )),
                       ),
@@ -148,7 +153,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 title: 'Log In',
                                 onTap: () {
                                   Navigator.pushReplacementNamed(
-                                      context, '/cutomer_login_page');
+                                      context, '/customer_login_page');
                                 },
                               ),
                               LogSignWidget(

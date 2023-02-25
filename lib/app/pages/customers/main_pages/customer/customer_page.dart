@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shopp_app/app/pages/constants_colors/AppColors.dart';
 import 'package:shopp_app/app/pages/customers/main_pages/profile/profile_page.dart';
 import 'package:shopp_app/app/pages/home_page/home_page.dart';
 
@@ -29,29 +30,30 @@ class _CustomerPageState extends State<CustomerPage> {
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         currentIndex: _selectedIndex,
-        // unselectedItemColor: Colors.red,
-        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.grey[400],
+        backgroundColor: AppColors.green,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: AppColors.green),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Category',
-          ),
+              icon: Icon(Icons.search),
+              label: 'Category',
+              backgroundColor: AppColors.green),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
-            label: 'Stores',
-          ),
+              icon: Icon(Icons.shop),
+              label: 'Stores',
+              backgroundColor: AppColors.green),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+              backgroundColor: AppColors.green),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              backgroundColor: AppColors.green),
         ],
         onTap: (index) {
           setState(() {
